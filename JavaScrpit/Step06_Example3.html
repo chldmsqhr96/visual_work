@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step06_Example3.html</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            border: 1px solid red;
+            background-color: yellow;
+            cursor: pointer;
+            transition: margin-left 0.6s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">div1</div>
+    <div class="box">div2</div>
+    <div class="box">div3</div>
+    <div class="box">div4</div>
+    <div class="box">div5</div>
+    <script>
+        (function(){
+            let divs = document.querySelectorAll(".box");
+                for(let i=0; i<divs.length; i++){
+                    let move = 0;
+                    divs[i].addEventListener("click", (e)=> {
+                        move += 100;
+                        e.target.style.marginLeft = move + "px";
+                        }
+                    )
+                }
+            }
+        )();
+    </script>
+</body>
+</html>

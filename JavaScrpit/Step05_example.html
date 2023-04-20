@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step05_example.html</title>
+</head>
+<body>
+    <h1>if~else문 테스트</h1>
+    <p>이 번지 점프는 몸무게가 100kg이 넘으면 탈 수 없습니다.</p>
+    <input type="text" id="weight", placeholder="몸무게 입력">
+    <button onclick="check_w()">확인</button>
+    <p id="result"></p>
+    <script>
+        check_w = function() {
+            let wei = document.querySelector("#weight").value; // 반드시 function 내부에 작성할 것.
+                                                               // function 외부에 작성 시 값을 페이지 로딩 때 받아들이기 때문에
+                                                               // function 내부의 조건을 발생시킬 때 문제가 생긴다.
+
+            if (wei <= 100) {
+                document.querySelector("#result").innerText="이용 가능";
+                console.log("이용 가능")
+            }
+            else {
+                document.querySelector("#result").innerText="이용 불가";
+                console.log("이용 불가")
+            }
+        }
+    </script>
+</body>
+</html>

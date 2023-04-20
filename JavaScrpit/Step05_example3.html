@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stem05_example3.html</title>
+</head>
+<body>
+    <h1>다중 if문 테스트</h1>
+    <input type="text" id="jumsu" placeholder="점수 입력">
+    <button onclick="b_check()">확인</button>
+    <button onclick="b_check2()">확인2</button>
+    <p><strong id="result"></strong>학점 입니다.</p>
+    <script>
+        let b_check = function () {
+            let score = document.querySelector("#jumsu").value;
+
+            if (90 <= score) {
+                document.querySelector("#result").innerText="A"
+            }
+            else if (80 <= score) {
+                document.querySelector("#result").innerText="B"
+            }
+            else if (70 <= score) {
+                document.querySelector("#result").innerText="C"
+            } 
+            else if (60 <= score) {
+                document.querySelector("#result").innerText="D"
+            } 
+            else {
+                document.querySelector("#result").innerText="F"
+            }
+        }
+        let b_check2 = function () {
+            let score = document.querySelector("#jumsu").value;
+            let strong = document.querySelector("#result");
+
+            if (90 <= score) {
+                strong.innerText="A";
+            }
+            else if (80 <= score) {
+                strong.innerText="B";
+            }
+            else if (70 <= score) {
+                strong.innerText="C";
+            } 
+            else if (60 <= score) {
+                strong.innerText="D";
+            } 
+            else {
+                strong.innerText="F";
+            }
+        }
+    </script>
+</body>
+</html>

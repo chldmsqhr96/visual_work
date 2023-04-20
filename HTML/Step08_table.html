@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step08_table.html</title>
+    <style>
+        .my-table{
+            /* table 경계선 사이의 공간을 없앤다. */
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+    <h1>표(table) 형식으로 정보를 출력하기</h1>
+    <table>  
+        <tr> <!--tr은 행을 뜻한다-->
+            <th>번호</th> <!--table header의 약자, 항목을 분류-->
+            <th>이름</th>
+            <th>주소</th>
+        </tr>
+        <tr>
+            <td>1</td> 
+            <td>김구라</td>
+            <td>노량진</td>
+        </tr>
+        <tr>
+            <td>2</td> <!--table data의 약자, 분류된 값-->
+            <td>해골</td>
+            <td>행신동</td>
+        </tr>
+    </table>
+    <table border="2" class="my-table">
+        <tr>
+            <th>번호</th> 
+            <th>이름</th>
+            <th>주소</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>김구라</td>
+            <td>노량진</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>해골</td>
+            <td>행신동</td>
+        </tr>
+    </table>
+</body>
+</html>

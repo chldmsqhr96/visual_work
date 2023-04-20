@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step09_form.html</title>
+    <style>
+        fieldset {
+            background-color: rgb(255, 231, 202);
+            border: 1;
+            border-color: rgb(255, 191, 191);
+            border-radius: 40px;  
+            padding-top: 20px;
+            padding-left: 3px;
+            padding-right: 3px;
+            height: 238px;
+        }
+        .container {
+            width: 336px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        button {
+            background-color: rgb(255, 206, 214);
+            border-radius: 10px;  
+            border-color: rgb(255, 191, 191);
+            margin-top: 20px;
+            margin-bottom: 10px;
+            width: 68px;
+            height: 34px;
+            font-size: 14px;
+            font-weight: bold;  
+            padding: 2px;
+            border: 1;  
+        }
+        input {
+            border-color: rgb(255, 206, 214);
+            width: 232px;
+            height: 24px;
+            text-align: center;
+            border-radius: 30px;
+            border: 1;
+        }
+    </style>
+</head>
+<body style="text-align: center;">
+    <div class="container">
+        <h2>폼(form) 요소 작성하기</h2>
+            <form action="login.jsp">
+                <fieldset>
+                    <p style="font-weight: bold; color: rgb(252, 68, 68);">E-mail</p>
+                    <input class="input_1" type="email" id="email" name="email" placeholder="이메일"><br>
+                    <p style="font-weight: bold; color: rgb(252, 68, 68);">Password</p>
+                    <input class="input_2" type="password" id="pwd" name="password" placeholder="비밀번호"><br>
+                    <button type="submit" style="color: rgb(252, 68, 68);">Submit!</button>
+                </fieldset>
+            </form>
+    </div>
+</body>
+</html>

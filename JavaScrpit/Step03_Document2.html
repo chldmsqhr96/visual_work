@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step03_Document2.html</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            cursor: pointer;
+            transition: margin-left 1s ease-in-out;
+            /* margin-left: 100px; */
+        }
+    </style>
+</head>
+<body>
+    <h1>인라인 css test</h1>
+    <p style="color:red; background-color: antiquewhite;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, delectus itaque? Fugit unde eaque illum facere maxime quidem illo. Autem, quae laboriosam deserunt velit porro vitae excepturi tempora qui mollitia!</p>
+    <div class="box" onclick="b_click()">눌러보셈</div>
+    <script>
+        let b_click = function () {
+                document.querySelector("div").style.marginLeft="100px";
+        }
+        let b_click2 = function () {
+
+        }
+    </script>
+</body>
+</html>

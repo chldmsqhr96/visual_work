@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step03_Document.html</title>
+</head>
+<body>
+    <h1>document object 사용해보기</h1>
+    <button onclick="b_click()">바꾸기</button>
+    <p id="one" onmouseover="m_over()">p1</p>
+    <p class="my-class">p2</p>
+    <p class="my-class">p3</p>
+    <input type="text" id="two">
+    <button onclick="t_send()">전송 &rarr; </button>
+    <input type="text" id="three">
+
+    <script>
+        //h1 요소에 innerText를 특정 버튼을 눌렀을 때 바꾸고 싶다
+        function b_click() {
+            document.querySelector("h1").innerText="docu";
+        }
+
+        // p1에 mouseover가 되었을 때 innerText를 "마우스가 올라왔네?" 라고 변경
+        let m_over = function () {
+            document.querySelector("p").innerText="마우스가 올라왔네?";
+        }
+
+         let t_send = function () {
+            // 단순 대입할 경우
+            // document.querySelector("#three").value = document.querySelector("#two").value;
+
+            // 변수를 이용하여 전송하고 싶을 때
+            let msg = document.querySelector("#two").value;
+            document.querySelector("#three").value = msg;
+        }
+    </script>
+</body>
+</html>

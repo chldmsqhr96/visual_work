@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step01_DataType5.html</title>
+</head>
+<body>
+    <h1>javascript 데이터 type</h1>
+    <p><strong>Array</strong> type</p>
+    <script>
+        //배열에는 주로 한 가지 type의 데이터만 담는게 일반적이다.
+
+        let num = [10, 20, 30, 40, 50];
+        let names = ["김구라", "해골", "원숭이", "주뎅이", "덩어리"];
+        let data = [true, false, false, false, true];
+
+        let members = [
+            {num:1, name:"kim", addr:"노량진"},
+            {num:2, name:"park", addr:"행신동"},
+            {num:3, name:"umm", addr:"상도동"}
+        ];
+
+        let members2 = {
+            num:[1,2,3],
+            name:["kim", "park", "umm"],
+            addr:["노량진", "행신동", "상도동"]
+        }
+
+        members[0].num = 4;
+        members2.num[2] = 5;
+
+            let a = members;
+            let b = members[0];
+            let c = members[0].num;
+            let d = members[0].name;
+            let e = members[0].addr;
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step01_DataType3.html</title>
+</head>
+<body>
+    <h1>javascript 데이터 type</h1>
+    <p><strong>object</strong> type</p>
+    <script>
+        /* 한 명의 회원 정보를 다루고자 한다.
+           번호, 이름, 성별 
+           번호는 1이고, 이름은 김구라, 성별은 남자인 회원의 정보를 변수 3개에 각각 담아보세요 */
+        let pNum = 1;
+        let name = "김구라";
+        let gender = true;
+
+        //하나의 변수명으로 여러개의 값을 한번에 관리할 수 없을까?
+
+        let member = {
+            pNum:2,
+            name:"해골",
+            gender:true
+        };
+
+        let member2 = {
+            pNum:3,
+            name:"원숭이",
+            gender:true
+        };
+
+        let member3 = {
+            name:name,
+            pNum:pNum,
+            gender:gender
+        };
+
+        let a = member;
+        let b = member.pNum;
+        let c = member.name;
+        let d = member.gender;
+
+        // 빈 object를 만들고 나중에 필요에 따라서 데이터를 추가할 수 있다.
+
+        let member5 = {};
+        member5.pNum = 4;
+        member5.name = "원숭이";
+        member5.gender = false;
+
+        member2.pNum = 3; // override
+        member2.name = "김복순";
+        member2.gender = false;
+
+    </script>
+</body>
+</html>

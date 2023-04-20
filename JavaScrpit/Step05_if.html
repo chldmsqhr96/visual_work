@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step05_if.html</title>
+</head>
+<body>
+    <h1>조건부로 실행되는 code 블럭 구성하기</h1>
+    <p id="one"></p>
+    <p id="two"></p>
+    <script>
+        let name = prompt("이름을 입력하세요.")
+        if (name=="김구라") {
+            document.querySelector("#one").innerText="주인님 반갑습니다.";
+        }
+
+        let isEqual = name == "김구라"; // 변수명 작성 시 조건과 관련되게 이름을 작성하면 코딩의 가독성도 좋아지고, 수정할 때도 도움이 된다. 
+        if (isEqual){
+            document.querySelector("#two").innerText="주인님 반갑습니다.";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step03_Document2.html</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            cursor: pointer;
+            transition: margin-left 1s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <h1>인라인 css test</h1>
+    <p style="color:red; background-color: antiquewhite;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, delectus itaque? Fugit unde eaque illum facere maxime quidem illo. Autem, quae laboriosam deserunt velit porro vitae excepturi tempora qui mollitia!</p>
+    <div class="box" onclick="b_click()"></div>
+    <button onclick="b_click2()">Reset</button>
+    <button onclick="b_click3()">-100px</button>
+    <button onclick="b_click4()">+100px</button>
+    <script>
+        let move = 0;
+        let a = move;
+
+        let b_click = function () {
+            if(a < 1000) {
+                a += 100;
+                document.querySelector("div").style.marginLeft = a + "px";
+                document.querySelector("div").innerText= "px" + a;
+                console.log("a = " + a);
+            }
+            else {
+                a = 0;
+                document.querySelector("div").style.marginLeft = a + "px";
+                document.querySelector("div").innerText= "px" + a;
+                console.log("a = " + a);
+            }
+        }
+
+        let b_click2 = function () {
+            move = 0;
+            document.querySelector("div").style.marginLeft = move + "px";
+            document.querySelector("div").innerText= "px" + move;
+            console.log("move = " + move); 
+        }
+
+        let b_click3 = function () {      
+            move = move - 100;
+            document.querySelector("div").style.marginLeft = move + "px";
+            document.querySelector("div").innerText= "px" + move;
+            console.log("move = " + move); 
+        }
+
+        let b_click4 = function () { 
+            move = move + 100;
+            document.querySelector("div").style.marginLeft = move + "px";
+            document.querySelector("div").innerText= "px" + move;
+            console.log("move = " + move); 
+        }
+
+    </script>
+</body>
+</html>
