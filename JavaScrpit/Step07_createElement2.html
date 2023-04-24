@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step07_createElement</title>
+</head>
+<body>
+    <h1>문서 객체를 javascript로 만들기</h1>
+    <button id="addBtn">추가하기</button>
+    <div class="wrapper">
+
+    </div>
+
+    <script>
+        document.querySelector("#addBtn");
+        let p1 = document.createElement("p");
+
+        btn.addEventListener("click", ()=> {
+            p1.innerText="p1입니다.";
+            document.querySelector(".wrapper").append(p1);
+                    }
+            )
+    </script>
+</body>
+</html>
