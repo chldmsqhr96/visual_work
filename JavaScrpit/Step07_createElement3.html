@@ -16,6 +16,7 @@
     </ul>
 
     <script>
+        (function(){
         let btn = document.querySelector("#sendBtn");
         let msg = document.querySelector("#inputMsg");
 
@@ -26,6 +27,8 @@
             document.querySelector("#msgList").append(li);
                     }
                 )
+            }
+        )();
     </script>
 </body>
 </html>
