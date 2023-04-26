@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step07_Example.html</title>
+    <style>
+        .container{
+            width : 768px;
+            margin : 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>친구 목록 입니다.</h1>
+        <ul id="friendList">
+
+        </ul>
+    </div>
+
+    <script>
+        let name = ["김구라", "해골", "원숭이", "주뎅이", "덩어리"];
+
+        for (let i = 0; i < name.length; i++) {
+            let li = document.createElement("li");
+            li.innerText = name[i];
+            document.querySelector("#friendList").append(li);
+        }
+    </script>
+</body>
+</html>

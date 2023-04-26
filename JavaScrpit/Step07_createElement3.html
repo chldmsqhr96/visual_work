@@ -22,8 +22,8 @@
 
         btn.addEventListener("click", ()=> {
             let li = document.createElement("li");
-            let msgSend = msg.value;
-            li.innerText = msgSend
+            let msgSend = msg.value; // msg.value는 String type임 object의(inputMsg)의 value값(String)이기 때문에..
+            li.innerText = msgSend;
             document.querySelector("#msgList").append(li);
                     }
                 )
