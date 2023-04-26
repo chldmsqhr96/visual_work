@@ -15,6 +15,7 @@
 <body>
     <div class="container">
         <h1>친구 목록 입니다.</h1>
+        <button id="printBtn">출력하기</button>
         <ul id="friendList">
 
         </ul>
@@ -23,12 +24,16 @@
     <script>
         (function () {
             let name = ["김구라", "해골", "원숭이", "주뎅이", "덩어리"];
+            let btn = document.querySelector("#printBtn");
 
-            for (let i = 0; i < name.length; i++) {
-            let li = document.createElement("li");
-            li.innerText = name[i];
-            document.querySelector("#friendList").append(li);
-                }
+            btn.addEventListener("click", ()=>{
+                for (let i = 0; i < name.length; i++) {
+                let li = document.createElement("li");
+                li.innerText = name[i];
+                document.querySelector("#friendList").append(li);
+                        }
+                    }
+                )
             }
         )();
     </script>
