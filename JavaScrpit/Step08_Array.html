@@ -11,8 +11,9 @@
     <script>
         let nums = [-10, 20, -15, 5, 30];
          
-        let result = nums.filter((item)=>{
-                return item > 0;
+        let result = nums.filter((item)=>{ // 매개변수 item을 사용 item에 nums값이 각각 대입된다.
+                return item > 0; // 대입된 값 중 0보다 큰 값을 반환하여 result에 대입, 새로운 배열을 만든다.
+                                 // 배열 nums와 result는 엄연히 다른 개체이다.
             }
         )
         // 위의 함수를 축약하면 아래와 같다.
