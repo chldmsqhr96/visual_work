@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step09_Example.html</title>
+</head>
+<body>
+    <h1>setTimeout, setInterval, 함수</h1>
+    <button id="start">시작</button>
+    <button id="stop">정지</button>
+    <p>
+        <strong id="min">0</strong>분
+        <strong id="sec">0</strong>초
+    </p>
+    <script>
+        let sc = 0;
+        let mi = 0;
+
+            setInterval(() => {
+                sc++;
+                if (sc == 60) {
+                    mi++
+                    sc = 0;
+                }
+                document.querySelector("#sec").innerText = sc;
+                document.querySelector("#min").innerText = mi;
+            }, 1000);
+
+        // setTimeout, SetInterval 함수는 Javascript builtin 함수(내장함수)이다.
+
+        // setTimeout은 Delay time(ms) 이후 호출되는 함수
+        /*
+        setTimeout(() => {
+            console.log("setTimeout에 전달한 함수가 호출되네?")
+        }, 1000);
+        */
+        
+        /*
+        // setInterval은 설정된 Delay time(ms) 마다 값을 호출하는 함수
+        setInterval(() => {
+            console.log("setInterval에 전달한 함수가 호출되네?")
+        }, 1000);
+        */
+
+    </script>
+</body>
+</html>

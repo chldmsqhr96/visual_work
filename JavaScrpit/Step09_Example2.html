@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step09_Example2.html</title>
+</head>
+<body>
+    <h1>스탑워치 만들어보기</h1>
+    <p>
+        <strong id="min">0</strong> :
+        <strong id="sec">0</strong> :
+        <strong id="mSec">0</strong>
+    </p>
+    <button id="start">시작</button>
+    <button id="reset">재설정</button>
+
+    <script>
+        let mSec = 0;
+        let sec = 0;
+        let min = 0;
+        let isStarted = false;
+
+        document.querySelector("#start").addEventListener("click", (e)=>{
+                if (isStarted) {
+                isStarted = false;
+                e.target.innerText = "시작";
+                }
+                else {
+                isStarted = true;
+                e.target.innerText = "중단";
+                }
+            }
+        )
+        
+        setInterval(() => {
+            if (!isStarted) {
+                return;                
+            }
+
+            mSec++;
+
+            if (mSec == 100) {
+                sec++
+                mSec = 0;        
+            }
+
+            if (sec == 60) {
+                min++;
+                sec=0;
+            }
+
+            document.querySelector("#mSec").innerText = mSec;
+            document.querySelector("#sec").innerText = sec;
+            document.querySelector("#min").innerText = min;
+        }, 10);
+
+        document.querySelector("#reset").addEventListener("click", ()=>{
+            sec = 0;
+            mSec = 0;
+            min = 0;
+            document.querySelector("#mSec").innerText = mSec;
+            document.querySelector("#sec").innerText = sec;
+            document.querySelector("#min").innerText = min;
+            }
+        );
+    </script>
+</body>
+</html>
