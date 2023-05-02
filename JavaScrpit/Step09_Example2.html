@@ -9,9 +9,9 @@
 <body>
     <h1>스탑워치 만들어보기</h1>
     <p>
-        <strong id="min">0</strong> :
-        <strong id="sec">0</strong> :
-        <strong id="mSec">0</strong>
+        <strong id="min">00</strong> :
+        <strong id="sec">00</strong> :
+        <strong id="mSec">00</strong>
     </p>
     <button id="start">시작</button>
     <button id="reset">재설정</button>
@@ -43,12 +43,12 @@
 
             if (mSec == 100) {
                 sec++
-                mSec = 0;        
+                mSec = 0;       
             }
 
             if (sec == 60) {
                 min++;
-                sec=0;
+                sec = 0;
             }
 
             document.querySelector("#mSec").innerText = mSec;
@@ -67,7 +67,6 @@
             return;
             }
         );
-        
     </script>
 </body>
 </html>
