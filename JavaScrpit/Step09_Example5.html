@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step09_Example5.html</title>
+    <style>
+        canvas {
+            border : 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="myCanvas" width="800" height="500"></canvas>
+    <script>
+        //canvas 요소의 참조값 
+        const canvas=document.querySelector("#myCanvas");
+        //canvas 에 그림을 그릴 도구(context) 객체 얻어내기
+        const context=canvas.getContext("2d");
+
+        //canvas 에 그릴 이미지 로딩하기
+        const snipeImg=new Image();
+        snipeImg.src="images/snipe.png";
+
+        const HoleImg=new Image();
+        HoleImg.src="images/hole.png";
+
+        const backImg=new Image();
+        backImg.src="images/background.jpg";
+
+        let snipeX=0, snipeY=0;
+        const holes = [];
+
+        setInterval(() => {
+            context.drawImage(backImg, 0, 0, 800, 500);
+
+            for (let i = 0; i < holes.length; i++) {
+                let tmp = holes[i];
+                context.drawImage(HoleImg, tmp.x-10, tmp.y-10, 20, 20);
+            }
+
+            context.drawImage(snipeImg, snipeX-50, snipeY-50, 100, 100);
+        }, 10);
+
+        canvas.addEventListener("mousemove", (e)=>{
+            snipeX=e.offsetX;
+            snipeY=e.offsetY;
+            }
+        );
+
+        canvas.addEventListener("mousedown", (e)=>{
+            // 이벤트 발생 좌표를 object에 담는다.
+            const hole = {x:e.offsetX, y:e.offsetY};
+            // holes 배열에 저장 시킨다.
+            holes.push(hole);
+
+            }
+        );
+    </script>
+</body>
+</html>
