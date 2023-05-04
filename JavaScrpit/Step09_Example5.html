@@ -29,10 +29,26 @@
         const backImg=new Image();
         backImg.src="images/background.jpg";
 
+        const rabbit=new Image();
+        rabbit.src="images/rabbit_1.png"
+
+        const rabbit2=new Image();
+        rabbit2.src="images/rabbit2.png"
+
+        const rabbitImgs = [rabbit, rabbit2];
+
         let snipeX=0, snipeY=0;
         const holes = [];
 
+        //토끼 좌표
+        let rabbitX=400, rabbitY=250;
+        //토끼 인덱스
+        let rabbitIndex=0;
+        let count=0;
+
         setInterval(() => {
+            count++
+
             context.drawImage(backImg, 0, 0, 800, 500);
 
             for (let i = 0; i < holes.length; i++) {
@@ -40,7 +56,33 @@
                 context.drawImage(HoleImg, tmp.x-10, tmp.y-10, 20, 20);
             }
 
+            context.drawImage(rabbitImgs[rabbitIndex], rabbitX-50, rabbitY-50, 100, 100);    
+
+            if(count%20 == 0){
+                rabbitIndex++
+                
+                if (rabbitIndex == 2) {
+                    rabbitIndex = 0;
+                }
+            }
+
             context.drawImage(snipeImg, snipeX-50, snipeY-50, 100, 100);
+
+            //토끼를 랜덤한 위치로 이동
+            if(count%100 == 0) {
+            rabbitX = Math.random()*700+50
+            rabbitY = Math.random()*400+50
+            }
+
+            /*
+            // parseInt와 random을 이용한 토끼 위치 이동
+            let ranNum=parseInt(Math.random()*100);
+            if(ranNum == 50) {
+                rabbitX = Math.random()*700+50
+                rabbitY = Math.random()*400+50 
+            }
+            */
+
         }, 10);
 
         canvas.addEventListener("mousemove", (e)=>{
@@ -54,7 +96,6 @@
             const hole = {x:e.offsetX, y:e.offsetY};
             // holes 배열에 저장 시킨다.
             holes.push(hole);
-
             }
         );
     </script>
