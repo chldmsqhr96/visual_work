@@ -46,6 +46,10 @@
         let rabbitIndex=0;
         let count=0;
 
+        //총소리 객체 생성
+        const fireSound = new Audio("sounds/fire.wav");
+        const dieSound = new Audio("sounds/birddie.mp3");
+
         setInterval(() => {
             count++
 
@@ -91,13 +95,27 @@
             }
         );
 
-        canvas.addEventListener("mousedown", (e)=>{
-            // 이벤트 발생 좌표를 object에 담는다.
-            const hole = {x:e.offsetX, y:e.offsetY};
-            // holes 배열에 저장 시킨다.
-            holes.push(hole);
+        canvas.addEventListener("mousedown", (e)=>{ // 마우스 다운 시 이벤트 발생
+            let x = e.offsetX;
+            let y = e.offsetY;
+            const hole = {x, y}; // 이벤트 시 object 생성
+            holes.push(hole); // 생성된 object를 holes 배열에 추가
+            
+            fireSound.currentTime=0; // 오디오 파일 시간이 다 되기 전에는 오디오 파일이 다시 재생되지 않음으로, 따라서 총 소리 시간을 0으로 설정
+                                     // 이벤트가 발생할 때마다 audio 재생 시간을 리셋시켜줌, 총소리가 클릭할 때 마다 바로바로 나게 해줌
+            fireSound.play();
+
+            let isRabbitDie = x > rabbitX-50 &&
+                              x < rabbitX+50 &&
+                              y > rabbitY-50 &&
+                              y < rabbitY+50;
+
+            if(isRabbitDie){
+                dieSound.currentTime = 0;
+                dieSound.play();
+                console.log("Hit");
             }
-        );
+        });
     </script>
 </body>
 </html>

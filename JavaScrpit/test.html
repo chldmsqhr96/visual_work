@@ -8,7 +8,26 @@
 </head>
 <body>
     <script>
-        const a = {0:"김구라",1:"해골",2:"원숭이"};
+        // 1. Array를 미리 만들어놓는다.
+        let members = [];
+        // 2. Array에 넣을 Object를 만든다.
+        let mem1 = {num:1, name:"김구라", addr:"행신동"}
+        let mem2 = {num:2, name:"김구로", addr:"행산동"}
+        let mem3 = {num:3, name:"김구루", addr:"행성동"}
+
+        // 3. Array에 만들어낸 object를 push(추가)한다.
+        members.push(mem1);
+        members.push(mem2);
+        members.push(mem3);
+
+        for (let i = 0; i < members.length; i++) {
+            console.log(members[i]);
+        }
+
+        members.forEach(e => {
+            console.log(e);
+        });
+
     </script>
 </body>
 </html>
