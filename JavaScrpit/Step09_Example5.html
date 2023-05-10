@@ -13,7 +13,10 @@
 </head>
 <body>
     <canvas id="myCanvas" width="800" height="500"></canvas>
+    <p>잡은 토끼 마리수 : <strong id="point">0</strong></p>
     <script>
+        let score = 0;
+
         //canvas 요소의 참조값 
         const canvas=document.querySelector("#myCanvas");
         //canvas 에 그림을 그릴 도구(context) 객체 얻어내기
@@ -53,6 +56,9 @@
         //풍선 이미지를 저장할 배열
         const bubbleImage=[];
         const bubbles = [];
+
+        context.font="20px consolas";
+        context.strokeStyle="yellow";
         
         //풍선 이미지 로딩
         for (let i = 0; i < 6; i++) {
@@ -85,22 +91,37 @@
                 //i번째 풍선 정보를 가지고 있는 object를 참조
                 let tmp = bubbles[i];
                 //object안에 있는 정보를 바탕으로 풍선을 그린다.
-                context.drawImage(bubbleImage[tmp.index], tmp.x-25, tmp.y-25, 50, 50);
+                context.drawImage(bubbleImage[tmp.index], tmp.x-25, tmp.y-25, 50, 50); // bubbleImage
             }
 
+            //풍선 움직임
             for (let i = 0; i < bubbles.length; i++) {
                 let tmp = bubbles[i];
                 //각각의 풍선이 가지고 있는 speedX와 speedY값 만큼 x,y좌표를 변화시킨다.
                 tmp.x += tmp.speedX;
                 tmp.y += tmp.speedY;
+                //위에서 움직힌 직후 풍선이 화면을 벗어났는지 판별하기
+                let isOut = tmp.x < -25 || tmp.x > 825 || tmp.y < - 25 || tmp.y > 525;
+                if (isOut) {
+                    tmp.isOut=true;
+                }
+            }
+
+            for(let i=0; i<bubbles.length; i++) {
+                let tmp=bubbles[i];
+                if(tmp.isOut) { //if i번째 풍선이 화면을 벗어난다면
+                    bubbles.splice(i, 1);
+                }
             }
 
             context.drawImage(snipeImg, snipeX-50, snipeY-50, 100, 100);
 
+            context.strokeText("잡은 토끼 수 : " + score, 10, 30);
+
             //토끼를 랜덤한 위치로 이동
             if(count%100 == 0) {
-            rabbitX = Math.random()*700+50
-            rabbitY = Math.random()*400+50
+                rabbitX = Math.random()*700+50;
+                rabbitY = Math.random()*400+50;
             }
 
             /*
@@ -140,20 +161,27 @@
                 dieSound.play();
                 console.log("Hit");
 
-                for (let i = 0; i < 6; i++) {
+                for (let i = 0; i < bubbleImage.length; i++) {
                     //새로운 object를 하나 만들어서
                     let tmp = {};
                     
-                    //풍선하나의 정보를 담고
-                    tmp.x = rabbitX;
+                    //풍선의 정보
+                    tmp.x = rabbitX; // 빈 오브젝트 tmp에 .을 붙여 정보를 생성
                     tmp.y = rabbitY;
-                    tmp.index = i;
-                    tmp.speedX=Math.random()*20-10;
-                    tmp.speedY=Math.random()*20-10;
+                    tmp.index = i; // for문의 조건 i를 통해 tmp를 생성함
+                    tmp.speedX=Math.random()*20-10; // x축으로 풍선이 퍼져나가는 속도
+                    tmp.speedY=Math.random()*20-10; // y축으로 풍선이 퍼져나가는 속도
+                    tmp.isOut = false; // 화면을 벗어났는지 여부를 확인
 
                     //배열에 누적시키기
                     bubbles.push(tmp);
                 }
+
+                //총에 맞은 토끼를 다른 위치로 움직이게 하기
+                rabbitX = Math.random()*700+50;
+                rabbitY = Math.random()*400+50;
+
+                document.querySelector("#point").innerText = score++;
             }
         });
     </script>
