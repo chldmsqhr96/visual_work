@@ -13,7 +13,6 @@
 </head>
 <body>
     <canvas id="myCanvas" width="800" height="500"></canvas>
-    <p>잡은 토끼 마리수 : <strong id="point">0</strong></p>
     <script>
         let score = 0;
 
@@ -28,7 +27,7 @@
 
         const HoleImg=new Image();
         HoleImg.src="images/hole.png";
-
+ 
         const backImg=new Image();
         backImg.src="images/background.jpg";
 
@@ -59,7 +58,19 @@
 
         context.font="20px consolas";
         context.strokeStyle="yellow";
-        
+
+        //시계 다이얼 이미지
+        const dialImg=new Image();
+        dialImg.src="images/dial.png";
+
+        //초침 이미지
+        const secImg=new Image();
+        secImg.src="images/clock_sec.png";
+
+        //시계를 그릴 좌표
+        const clockX = 700;
+        const clockY = 100;
+
         //풍선 이미지 로딩
         for (let i = 0; i < 6; i++) {
             let tmp = new Image(); // tmp에 new Image()참조
@@ -70,13 +81,32 @@
         setInterval(() => {
             count++
 
+            // context.rotate(0.1); context를 회전
+            // context.translate(1,1); context를 평행이동
+
+            //배경 이미지
             context.drawImage(backImg, 0, 0, 800, 500);
 
+            //총구멍 그리기
             for (let i = 0; i < holes.length; i++) {
                 let tmp = holes[i];
                 context.drawImage(HoleImg, tmp.x-10, tmp.y-10, 20, 20);
             }
 
+            //현재 context의 정상 상태(기본 상태)를 저장
+            context.save();
+            //시계를 그릴 좌표로 평행이동
+            context.translate(clockX, clockY);
+            //시계를 원점에 그리기
+            context.drawImage(dialImg, 0-100, 0-100, 200, 200);
+            //테스트로 초침 그리기전에 context를 30도 회전해서 돌려보기
+            context.rotate(count*Math.PI/180);
+            //초침 원점에 그리기
+            context.drawImage(secImg, 0-4, 0-80, 8, 90);
+            //다른 그림에 영향가지 않도록 저장했던 저장상태로 context를 되돌린다.
+            context.restore();
+
+            //토끼 그리기
             context.drawImage(rabbitImgs[rabbitIndex], rabbitX-50, rabbitY-50, 100, 100);    
 
             if(count%20 == 0){
@@ -107,8 +137,8 @@
                 }
             }
 
-            for(let i=0; i<bubbles.length; i++) {
-                let tmp=bubbles[i];
+            for(let i=0; i< bubbles.length; i++) {
+                let tmp = bubbles[i];
                 if(tmp.isOut) { //if i번째 풍선이 화면을 벗어난다면
                     bubbles.splice(i, 1);
                 }
@@ -173,6 +203,17 @@
                     tmp.speedY=Math.random()*20-10; // y축으로 풍선이 퍼져나가는 속도
                     tmp.isOut = false; // 화면을 벗어났는지 여부를 확인
 
+                    /* // 이런 식의 작업 방식을 잘 익혀놓을 것
+                    let tmp2 = {
+                        x:rabbitX,
+                        y:rabbitY,
+                        index:i,
+                        speedX:Math.random()*20-10,
+                        speedY:Math.random()*20-10,
+                        isOut:false
+                    };
+                    */
+
                     //배열에 누적시키기
                     bubbles.push(tmp);
                 }
@@ -181,7 +222,7 @@
                 rabbitX = Math.random()*700+50;
                 rabbitY = Math.random()*400+50;
 
-                document.querySelector("#point").innerText = score++;
+                score++;
             }
         });
     </script>
