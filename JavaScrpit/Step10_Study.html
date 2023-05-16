@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step10_Study.html</title>
+</head>
+<body>
+    <p id="one"></p>
+    <p id="two"></p>
+    <p id="three">
+        <hr>
+    </p>
+    <p id="four">
+        <hr>
+    </p>
+    <script>
+        // 단순 문자열을 출력
+        document.querySelector("#one").innerText = `<img src="images/kim1.png">`
+
+        // 문자열을 html 형식으로 해석해서 출력(사진 출력)
+        document.querySelector("#two").innerHTML = `<img src="images/kim1.png">`
+
+        // innerHtml과 innerText는 기존에 출력된 문자열이나 문서 객체가 있으면 덮어쓰기가 된다.
+        document.querySelector("#three").innerHTML = `<img src="images/kim1.png">`
+
+        // 기존 요소를 유지하고 그 요소를 기준으로 어디에다 둘 지 정한다.
+        document.querySelector("#four").insertAdjacentHTML("beforeend", `<img src="images/kim1.png">`);
+        /*
+            beforebegin = 시작 전에
+            afterbegin = 시작 직후
+            beforeend = 끝나기 전
+            afterend = 끝난 후
+
+
+            시작 전(beforebegin)
+            <p>
+                시작 직후에(afterbegin)
+                [기존에 존재하는 요소]
+                끝나기 전에(beforeend)
+            <p>
+            끝난 후에(afterend)
+        */
+    </script>
+</body>
+</html>

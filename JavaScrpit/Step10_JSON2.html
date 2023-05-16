@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step10_JSON2.html</title>
+</head>
+<body>
+    <button id="printBtn">출력</button>
+    <p>번호 : <Strong id="num"></Strong></p>
+    <p>이름 : <Strong id="name"></Strong></p>
+    <p>주소 : <Strong id="addr"></Strong></p>
+    <script>
+        (function(){
+            const data = `
+            {"num":1,"name":"김구라","addr":"노량진"}
+            `;
+            
+            let btn = document.querySelector("#printBtn")
+            const result = JSON.parse(data);
+
+            btn.addEventListener("click", ()=>{
+                document.querySelector("#num").innerText = result.num;
+                document.querySelector("#name").innerText = result.name;
+                document.querySelector("#addr").innerText = result.addr;
+            })
+        })();
+    </script>
+</body>
+</html>
