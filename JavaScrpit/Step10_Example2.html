@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step10_Example2.html</title>
+</head>
+<body>
+    <button id="addBtn">목록보기</button>
+    <table>
+        <tr>
+            <th>번호</th>
+            <th>이름</th>
+            <th>주소</th>
+        </tr>
+        <tbody>
+        
+        </tbody>
+    </table>
+
+    <script>
+        (function () {
+            const data = `[
+                {"num":1,"name":"김구라","addr":"노량진"},
+                {"num":2,"name":"해골","addr":"행신동"},
+                {"num":3,"name":"원숭이","addr":"상도동"}
+            ]`;
+
+            const btn = document.querySelector("#addBtn");
+
+            btn.addEventListener("click", ()=>{
+                const result = JSON.parse(data);
+
+                /* const tr = `
+                            <tr>
+                                <td>${result[0].num}</td>
+                                <td>${result[0].name}</td>
+                                <td>${result[0].addr}</td>
+                            </tr>
+                            <tr>
+                                <td>${result[1].num}</td>
+                                <td>${result[1].name}</td>
+                                <td>${result[1].addr}</td>
+                            </tr>
+                            <tr>
+                                <td>${result[2].num}</td>
+                                <td>${result[2].name}</td>
+                                <td>${result[2].addr}</td>
+                            </tr>
+                           ` 
+                    document.querySelector("tbody").insertAdjacentHTML("beforeend", tr);
+                */
+
+                /*
+                for (let i = 0; i < result.length; i++) { // 배열은 for문을 이용해 쉽게 사용할 수 있음을 기억하자.
+                    let tr2 =
+                        `
+                            <tr>
+                                <td>${result[i].num}</td>
+                                <td>${result[i].name}</td>
+                                <td>${result[i].addr}</td>
+                            </tr>
+                        `
+                    document.querySelector("tbody").insertAdjacentHTML("beforeend", tr2);
+                }
+                */
+
+                /*
+                let i = 0;
+                
+                while (i < result.length) {
+                    let tr2 =
+                        `
+                            <tr>
+                                <td>${result[i].num}</td>
+                                <td>${result[i].name}</td>
+                                <td>${result[i].addr}</td>
+                            </tr>
+                        `
+                    document.querySelector("tbody").insertAdjacentHTML("beforeend", tr2);
+                    i++;
+                }
+                */
+
+                for(let i = 0; i < result.length; i++){
+                    let tmp = result[i];
+                    let tr3 =
+                        `
+                            <tr>
+                                <td>${tmp.num}</td>
+                                <td>${tmp.name}</td>
+                                <td>${tmp.addr}</td>
+                            </tr>
+                        `
+                    document.querySelector("tbody").insertAdjacentHTML("beforeend", tr3);
+                }
+            });
+        })();
+        
+    </script>
+</body>
+</html>
