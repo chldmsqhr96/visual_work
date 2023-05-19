@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step10_Example4.html</title>
+</head>
+<body>
+    <input type="text" placeholder="번호 입력.." id="inputNum">
+    <br>
+    <input type="text" placeholder="이름 입력.." id="inputName">
+    <br>
+    <input type="text" placeholder="주소 입력.." id="inputAddr">
+    <br>
+    <button id="saveBtn">저장</button>
+    <button id="deleteBtn">삭제</button>
+    <script>
+        /*
+        번호,이름,주소를 입력하고 저장 버튼을 눌렀을 때 localStorage에 저장하고
+        삭제 버튼을 눌렀을 때 localStorage에 저장된 정보를 삭제,
+        페이지 로딩 시점에 localStorage에 저장된 번호, 이름, 주소가 있다면
+        위의 input요소에 출력되게 할 것.
+        */
+
+        document.querySelector("#saveBtn").addEventListener("click", ()=>{
+            const num = Number(document.querySelector("#inputNum").value);
+            const name = document.querySelector("#inputName").value;
+            const addr = document.querySelector("#inputAddr").value;
+            const data = {num, name, addr};
+            const json = JSON.stringify(data);
+            localStorage.savedMember = json;
+            location.reload();
+        });
+
+        if (localStorage.savedMember) {
+            const obj = JSON.parse(localStorage.savedMember);
+
+            document.querySelector("#inputNum").value = obj.num;
+            document.querySelector("#inputName").value = obj.name;
+            document.querySelector("#inputAddr").value = obj.addr;
+        }
+
+        document.querySelector("#deleteBtn").addEventListener("click", ()=>{
+            delete localStorage.savedMember;
+            location.reload();
+        });
+
+    </script>
+</body>
+</html>
