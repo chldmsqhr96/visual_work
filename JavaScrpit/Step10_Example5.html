@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step10_Example5.html</title>
+</head>
+<body>
+    <input type="text" placeholder="번호 입력.." id="inputNum">
+    <br>
+    <input type="text" placeholder="이름 입력.." id="inputName">
+    <br>
+    <input type="text" placeholder="주소 입력.." id="inputAddr">
+    <br>
+    <button id="saveBtn">저장</button>
+    <button id="deleteBtn">삭제</button>
+
+    <table border="1">
+        <thead>
+            <th>번호</th>
+            <th>이름</th>
+            <th>주소</th>
+            <th>삭제</th>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <script>
+        /*
+        오브젝트에 누적이 되도록 하고, JSON문자열로 만들어서 LocalStorage에 업데이트 되도록 하라
+        */
+
+        if(localStorage.members){
+            printMembers();
+        }
+
+        document.querySelector("#saveBtn").addEventListener("click", ()=>{
+            const num = Number(document.querySelector("#inputNum").value);
+            const name = document.querySelector("#inputName").value;
+            const addr = document.querySelector("#inputAddr").value;
+            const data = {num, name, addr};
+
+            //빈 배열 준비
+            let members=[];
+
+            //만약 localStorage에 이미 저장된 정보가 있다면
+            if(localStorage.members){
+                //해당 정보를 이용해 배열을 만든다.
+                members = JSON.parse(localStorage.members);
+            }
+
+            //members 배열에 data를 추가
+            members.push(data);
+            
+            //OBJ -> JSON은 stringify, JSON -> OBJ는 parse
+            const json = JSON.stringify(members);
+            localStorage.members = json;
+            printMembers();
+        });
+
+        function printMembers() {
+                //tbody 내용 삭제
+                document.querySelector("tbody").innerText = "";
+                //localStorage에 저장된 문자열을 배열로 변환
+                const members = JSON.parse(localStorage.members);
+
+                //반복문 돌면서 tbody에 tr출력
+            for (let i = 0; i < members.length; i++) {
+                let tmp = members[i];
+                const tr = `
+                    <tr>
+                        <td>${tmp.num}</td>
+                        <td>${tmp.name}</td>
+                        <td>${tmp.addr}</td>
+                        <td>
+                            <a href="javascript:deleteItem(${i})">삭제</a>
+                        </td>
+                    </tr>
+                    `
+                document.querySelector("tbody").insertAdjacentHTML("beforeend", tr);
+            }
+        }
+
+        //특정 아이템만 삭제하는 함수
+        function deleteItem(i) {
+            //localStorage에 배열 생성
+            const members = JSON.parse(localStorage.members);
+            //해당 배열에서 splice(index, )를 이용해 삭제
+            members.splice(i, 1);
+            //localStorage에 JSON 문자열로 다시 저장한 후
+            localStorage.members = JSON.stringify(members);
+            //printMembers()함수 호출
+            printMembers();
+        }
+
+
+        document.querySelector("#deleteBtn").addEventListener("click", ()=>{
+            delete localStorage.members;
+            document.querySelector("tbody").innerText = "";
+        });
+        </script>
+</body>
+</html>
