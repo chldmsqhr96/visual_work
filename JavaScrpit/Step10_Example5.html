@@ -61,12 +61,12 @@
         });
 
         function printMembers() {
-                //tbody 내용 삭제
-                document.querySelector("tbody").innerText = "";
-                //localStorage에 저장된 문자열을 배열로 변환
-                const members = JSON.parse(localStorage.members);
+            //tbody 내용 삭제
+            document.querySelector("tbody").innerText = "";
+            //localStorage에 저장된 문자열을 배열로 변환
+            const members = JSON.parse(localStorage.members);
 
-                //반복문 돌면서 tbody에 tr출력
+            //반복문 돌면서 tbody에 tr출력
             for (let i = 0; i < members.length; i++) {
                 let tmp = members[i];
                 const tr = `
@@ -95,10 +95,9 @@
             printMembers();
         }
 
-
         document.querySelector("#deleteBtn").addEventListener("click", ()=>{
             delete localStorage.members;
-            document.querySelector("tbody").innerText = "";
+            location.reload();
         });
         </script>
 </body>
