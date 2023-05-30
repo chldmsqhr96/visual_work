@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step02_form3.html</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+    <div class="container col-sm-6 mx-auto">
+        <h1>회원 가입 form</h1>
+        <form action="">
+            <label for="id">아이디</label>
+            <input class="form-control is-invalid" type="text" name="id" id="id">
+            <div class="invalid-feedback">
+                5글자 이상 입력해주세요
+            </div>
+            <div class="valid-feedback">
+                5글자 이상 입력함
+            </div>
+        </form>
+    </div>
+    <script>
+        (function () {
+            const id = document.querySelector("#id")
+
+            // 어떤 이벤트명을 사용할 지, 이벤트 객체를 어떻게 활용할 지 인지하자.
+            document.querySelector("#id").addEventListener("input", (/*e*/)=>{
+                if (id.value.length < 5) {
+                    id.classList.add("is-invalid")
+                    id.classList.remove("is-valid")
+                }
+                else {
+                    id.classList.remove("is-invalid")
+                    id.classList.add("is-valid")
+                }
+
+                /*
+                // 콜백 함수를 이용한 이벤트 활성
+                const id = e.target.value;
+
+                if (id.length < 5) {
+                    id.classList.add("is-invalid")
+                    id.classList.remove("is-valid")
+                }
+                else {
+                    id.classList.remove("is-invalid")
+                    id.classList.add("is-valid")
+                }
+                */
+            })
+        })();
+    </script>
+</body>
+</html>
