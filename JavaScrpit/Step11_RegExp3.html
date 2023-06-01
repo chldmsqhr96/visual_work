@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step11_RegExp3.html</title>
+</head>
+<body>
+    <h1>매칭되는 문자열 여러개 추출하기</h1>
+    <ul id="wordList">
+    </ul>
+    <script>
+        const str = "My name is kimgura";
+        /*
+            공백이 아닌 한글자가 1번 이상 반복되는 문자열을 모두 찾아낼 수 있는 정규표현식 객체
+            뒤에 붙은 g는 global의 약자이며, 전체(global)에서 찾겠다는 의미.
+        */
+
+        // 두 정규 표현식은 같은 의미를 가진다.
+        const reg = /[^ ]+/g;
+        const reg2 = new RegExp("[^ ]+", "g");
+
+        while(true){
+        /*
+            exec()가 리턴하는 데이터는 특별한 기능을 가지고 있는 문자열이다.
+            일반 String Type이 가지고 있지 않은 다른 기능(필드)를 가지고 있지만
+            단순 문자열이라고 봐도 무방하다.
+        */
+            let tmp = reg.exec(str);
+            if(tmp==null)break; // 더 이상 찾을 수 있는 게 없다면 null이 리턴되기에, null이 리턴됐을 경우 while문에 break를 건다.
+            const word = `<li>${tmp}</li>`;
+            document.querySelector("#wordList").insertAdjacentHTML("beforeend", word);
+        }
+    </script>
+</body>
+</html>

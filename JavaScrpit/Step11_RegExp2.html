@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step11_RegExp2.html</title>
+</head>
+<body>
+    <h1>입력한 문자열 검증하기</h1>
+    <p>반드시 특수문자 허용하지 않는다.</p>
+    <input type="text" id="one" placeholder="입력...">
+    <p id="result"></p>
+    <script>
+        document.querySelector("#one").addEventListener("input", (e)=>{
+            // 1. input의 문자열을 읽어와서
+            const text = e.target.value;
+            /*
+                2. 반드시 입력(한글자 이상) 해야 하고 특수 문자는 허용하지 않음
+                id가 result인 p요소의 innerText로 "Pass"를 출력
+                만족하지 않으면 Fail 을출력
+            */
+            let reg = new RegExp('[a-zA-Z0-9]+'); // 정규 표현식의 조건 +, *, ?는 원하는 문자의 뒤에 붙이자. 절대 맨 앞에 붙이는 것 아님
+            textPass = reg.test(text);
+
+            if (textPass) {
+                document.querySelector("#result").innerText = "pass";
+            } else {
+                document.querySelector("#result").innerText = "fail";
+            }
+        });
+    </script>
+</body>
+</html>

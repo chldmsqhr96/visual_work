@@ -15,10 +15,10 @@
                 <label for="id">아이디</label>
                 <input class="form-control" type="text" name="id" id="id">
                 <div class="invalid-feedback">
-                    5글자 이상 입력해주세요
+                    영문자 소문자로 시작하고 4글자 이상 10글자 이하로 작성해주세요
                 </div>
                 <div class="valid-feedback">
-                    5글자 이상 입력함
+                    영문자 소문자로 시작하고 4글자 이상 10글자 이하로 작성함
                 </div>
             </div>
             <div>
@@ -43,7 +43,10 @@
 
             document.querySelector("#id").addEventListener("input", (e)=>{
                 const inputId = e.target.value;
-                isIdValid = inputId.length >= 5;
+                // 아이디가 영문자 소문자로 시작하고 4글자 이상 10글자 이하인지 확인
+                let regex = new RegExp('^[a-z].{3,9}$')
+                // 입력할 아이디를 정규표현식의 테스트 함수에 넣는다.
+                isIdValid = regex.test(inputId);
                 if (isIdValid) {
                     id.classList.remove("is-invalid")
                     id.classList.add("is-valid")
@@ -56,8 +59,8 @@
             });
 
             document.querySelector("#email").addEventListener("input", (e)=>{
-                inputEmail = e.target.value;
-                let regex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}');
+                const inputEmail = e.target.value;
+                let regex = new RegExp('^[a-z0-9]+@[a-z]+\\.+[a-z]{2,3}$');
                 isEmailValid = regex.test(inputEmail);
                 if(isEmailValid){
                     e.target.classList.add("is-valid");
