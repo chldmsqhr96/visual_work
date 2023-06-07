@@ -45,6 +45,7 @@
                 const inputId = e.target.value;
                 // 아이디가 영문자 소문자로 시작하고 4글자 이상 10글자 이하인지 확인
                 let regex = new RegExp('^[a-z].{3,9}$')
+                let regex2 = /^[a-z].{3,9}$/;
                 // 입력할 아이디를 정규표현식의 테스트 함수에 넣는다.
                 isIdValid = regex.test(inputId);
                 if (isIdValid) {

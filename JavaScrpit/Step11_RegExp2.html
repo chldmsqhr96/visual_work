@@ -20,8 +20,9 @@
                 id가 result인 p요소의 innerText로 "Pass"를 출력
                 만족하지 않으면 Fail 을출력
             */
-            let reg = new RegExp('[a-zA-Z0-9]+'); // 정규 표현식의 조건 +, *, ?는 원하는 문자의 뒤에 붙이자. 절대 맨 앞에 붙이는 것 아님
-            textPass = reg.test(text);
+            let reg = /^[\w]+$/;
+            let reg2 = new RegExp('^[\\w]+$'); // 정규 표현식의 조건 +, *, ?는 원하는 문자의 뒤에 붙이자. 절대 맨 앞에 붙이는 것 아님
+            textPass = reg2.test(text);
 
             if (textPass) {
                 document.querySelector("#result").innerText = "pass";

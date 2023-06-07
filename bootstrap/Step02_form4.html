@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step02_form4.html</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+    <div class="container col-sm-6 mx-auto">
+        <h1>다양한 form 디자인</h1>
+        <form action="signup">
+            <div class="form-floating">
+                <input class="form-control mb-2" type="text" name="id" id="id" placeholder="아이디 입력">
+                <label for="id">아이디를 입력해주세요</label>
+            </div>
+            <div class="form-floating">
+                <input class="form-control mb-2" type="password" name="pwd" id="pwd" placeholder="아이디 입력">
+                <label for="pwd">비밀번호를 입력해주세요</label>
+            </div>
+            <select name="job" id="job" class="form-select mb-2">
+                <option value="">직업 선택</option>
+                <option value="piano">피아니스트</option>
+                <option value="programmer">프로그래머</option>
+                <option value="doctor">의사</option>
+            </select>
+            <fieldset class="mb-2">
+                <legend>성별 체크</legend>
+                <div class="form-check-inline">
+                    <input class="form-check-input" type="radio" id="one" name="gender" checked>
+                    <label class="form-check-label" for="one">남자</label>
+                </div>
+                <div class="form-check-inline">
+                    <!--input type radio 같은 경우 name의 value가 같을 때 그룹으로 묶인다-->
+                    <input class="form-check-input" type="radio" id="two" name="gender">
+                    <label class="form-check-label" for="two">여자</label>
+                </div>
+            </fieldset>
+
+            <button class="btn btn-outline-primary" type="submit">가입</button>
+        </form>
+    </div>
+</body>
+</html>

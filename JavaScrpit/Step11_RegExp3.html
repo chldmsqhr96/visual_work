@@ -12,25 +12,16 @@
     </ul>
     <script>
         const str = "My name is kimgura";
-        /*
-            공백이 아닌 한글자가 1번 이상 반복되는 문자열을 모두 찾아낼 수 있는 정규표현식 객체
-            뒤에 붙은 g는 global의 약자이며, 전체(global)에서 찾겠다는 의미.
-        */
 
-        // 두 정규 표현식은 같은 의미를 가진다.
-        const reg = /[^ ]+/g;
-        const reg2 = new RegExp("[^ ]+", "g");
+        const reg = /[^ ]+/g; // [^] = 부정함, ^뒤에 공백이 있음으로 이는 공백을 제외한 전체(global) 문자를 모두 추출한다는 뜻.
+        const reg2 = new RegExp("[^ ]+", "g"); // 위와 같은 표현식
 
         while(true){
-        /*
-            exec()가 리턴하는 데이터는 특별한 기능을 가지고 있는 문자열이다.
-            일반 String Type이 가지고 있지 않은 다른 기능(필드)를 가지고 있지만
-            단순 문자열이라고 봐도 무방하다.
-        */
-            let tmp = reg.exec(str);
+
+            let tmp = reg.exec(str); // exec는 문자열을 추출, while문을 통해 공백을 제외한 문자를 반복해서 추출
             if(tmp==null)break; // 더 이상 찾을 수 있는 게 없다면 null이 리턴되기에, null이 리턴됐을 경우 while문에 break를 건다.
-            const word = `<li>${tmp}</li>`;
-            document.querySelector("#wordList").insertAdjacentHTML("beforeend", word);
+            const word = `<li>${tmp}</li>`; //null이 아니라면 백틱을 통한 문자열을 word에 대입
+            document.querySelector("#wordList").insertAdjacentHTML("beforeend", word); // 이후 insertAdj~html를 통해 li 요소를 추가(생성)한다.
         }
     </script>
 </body>
