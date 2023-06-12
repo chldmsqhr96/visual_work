@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step04_Dropdown.html</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/bootstrap.bundle.js"></script>
+</head>
+<body>
+    <div class="container col-sm-6 mx-auto">
+        <h1>Dropdown Button 테스트</h1>
+        <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dropdown button
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="container col-sm-6 mx-auto" id="myDrop">
+        <h1>a의 value가 btn에 들어가게 하기</h1>
+        <div class="dropdown">
+            <button class="btn btn-info dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              메뉴 선택
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">김밥</a></li>
+              <li><a class="dropdown-item" href="#">라면</a></li>
+              <li><a class="dropdown-item" href="#">떡볶이</a></li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        /*
+        const as = document.querySelectorAll("#myDrop a");
+        for (let i = 0; i < as.length; i++) {
+            as[i].addEventListener("click", (e)=>{
+                let menu = e.target.innerText
+                document.querySelector("#myDrop button").innerText = menu;
+            });
+        }
+        */
+        document.querySelectorAll("#myDrop a").forEach((e) => {
+            e.addEventListener("click", (e)=>{
+                let menu = e.target.innerText
+                document.querySelector("#myDrop button").innerText = menu;
+            })
+        });
+    </script>
+</body>
+</html>
