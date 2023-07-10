@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step02_Example2</title>
+    <style>
+        .container{
+            width:80%;
+            margin: 0 auto;
+        }
+        .wrapper{
+            width: 300px;
+            height: 300px;
+            border: 1px solid red;
+            overflow: auto;
+        }
+        #one{
+            width:300px;
+            height:300px;
+            background-color: aqua;
+            transition: 0.4s ease-out;
+        }
+        .move{
+            transform: translateX(-300px);
+        }
+        button{
+            width: 100px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>transform example</h3>
+        <div class="wrapper">
+            <div id="one">one</div>
+        </div>
+        <button id="toggle">토글</button>
+    </div>
+    <script>
+        let one = document.querySelector("#one");
+
+        document.querySelector("#toggle").addEventListener("click", ()=>{
+            one.classList.toggle("move")
+        })
+        //boolean타입 변수를 초기화 및 선언하고 if else의 형태로도 위와 같은 느낌의 코드를 만들 수 있다.
+    </script>
+</body>
+</html>

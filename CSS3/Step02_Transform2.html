@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step02_Transform2</title>
+    <style>
+        .box{
+            width:100px;
+            height:100px;
+            border:1px solid red;
+            cursor:pointer;
+            background-color: yellow;
+            transition: 0.4s ease-out
+        }
+        /* ClassList.add를 이용해서 하는 방법도 있다. */
+        /* .move{
+            transform: translateX(50px) translateY(50px) rotate(45deg) scale(1.5);
+        } */
+    </style>
+</head>
+<body>
+    <h1>transform test</h1>
+    <div class="box"></div>
+    <script>
+        document.querySelector(".box").addEventListener("mouseover", (e)=>{
+            e.target.style.transform = "translateX(50px)"+"TranslateY(50px)"+"rotate(45deg)"+"scale(1.5)";
+        })
+        document.querySelector(".box").addEventListener("mouseout", (e)=>{
+            e.target.style.transform = "";
+        })
+    </script>
+</body>
+</html>
