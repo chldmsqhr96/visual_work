@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step03_example2</title>
+    <link rel="stylesheet" href="css/animate.css">
+    <style>
+        .rubber{
+            animation-name: rubberBand;
+            animation-duration: 1s;
+        }
+        button{
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button id="myBtn">click me!</button>
+    </div>
+    <script>
+       document.querySelector("#myBtn").addEventListener("click", (e)=>{
+            e.target.classList.add("rubber");
+       });
+
+       document.querySelector("#myBtn").addEventListener("animationend", (e)=>{
+            e.target.classList.remove("rubber");
+       });
+    </script>
+</body>
+</html>
