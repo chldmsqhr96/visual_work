@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step04_3dTransform</title>
+    <style>
+        .wrapper{
+            /* viewer(보는 사람)와 object(물체) 사이의 거리*/
+            perspective: 500px;
+            /* viewer(보는 사람)의 위치 X(좌에서 0% 우로 100%), Y(위에서부터 0 아래로 갈수록 100%)를 퍼센트로 수치 조정*/
+            perspective-origin: 50% 50%;
+            border: 1px solid blue;
+            height: 400px;
+            padding-top: 100px;
+        }
+        .target{
+            margin: 0 auto;
+            width: 200px;
+            border: 1px solid red;
+            /* x,y,z축이 교차하는 원점을 설정 */
+            transform-style: preserve-3d;
+            transform-origin: 50% 50%;
+            transition: transform 0.4s ease-out;
+        }
+        .target img{
+            max-width: 100%;
+        }
+        #one:hover{
+            transform: rotateY(45deg);
+        }
+        #two:hover{
+            transform: rotateX(45deg);
+        }
+        #three:hover{
+            transform: rotate(45deg) rotateX(45deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>3d transform 테스트</h3>
+        <!-- 3d 공간을 만들 wrapper div -->
+        <div class="wrapper">
+            <!-- 3d transform 을 할 아이템-->
+            <div class="target" id="one">
+                <img src="images/image1.png"/>
+            </div>
+        </div>
+        <div class="wrapper">
+            <!-- 3d transform 을 할 아이템-->
+            <div class="target" id="two">
+                <img src="images/image1.png"/>
+            </div>
+        </div>
+        <div class="wrapper">
+            <!-- 3d transform 을 할 아이템-->
+            <div class="target" id="three">
+                <img src="images/image1.png"/>
+            </div>
+        </div>
+    </div>    
+</body>
+</html>
