@@ -65,7 +65,12 @@
             let count = 0;
             document.querySelector("#flipBtn").addEventListener("click", ()=>{
                 let Interval = setInterval(() => {
-                    target.classList.toggle("toggle");
+                    //classList.toggle기능은 clearInterval시 완전한 초기화가 되지 않음
+                    if(target.classList.contains("toggle")){
+                        target.classList.remove("toggle");
+                    } else {
+                        target.classList.add("toggle");
+                    }
                     count++
                     document.querySelector("#count").innerText = count+"번 뒤집힘";
                 }, 1000);
@@ -74,16 +79,12 @@
                     clearInterval(Interval);
                     document.querySelector("#count").innerText = "";
                     count = 0;
-                    target.classList.contains("toggle");
+                    if(target.classList.contains("toggle")){
+                        target.classList.remove("toggle");
+                    } else {
+                        target.classList.add("toggle");
+                    }
                 })
-
-                /*
-                if(target.classList.contains("toggle")){
-                    target.classList.remove("toggle");
-                } else {
-                    target.classList.add("toggle");
-                }
-                */
             })
         })();
     </script>
